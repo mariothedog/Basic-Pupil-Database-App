@@ -3,7 +3,7 @@ from application import Application
 
 if __name__ == "__main__":
     root = tk.Tk()
-    root.geometry("300x300")
+    root.geometry("320x320")
     root.title("Pupil Database")
     app = Application(parent=root, highlightbackground="black",
                       highlightthickness=3)
