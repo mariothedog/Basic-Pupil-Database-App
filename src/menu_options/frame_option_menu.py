@@ -1,6 +1,7 @@
 import tkinter as tk
 
 from frame_page import FramePage
+from menu_options.frame_add_pupil import FrameAddPupil
 
 
 class FrameOptionMenu(FramePage):
@@ -10,8 +11,10 @@ class FrameOptionMenu(FramePage):
         self.columnconfigure(0, weight=1)
 
         BUTTON_WIDTH = 10
-        tk.Button(self, text="Add Pupil", width=BUTTON_WIDTH).grid(sticky=tk.S)
+        tk.Button(self, text="Add Pupil", width=BUTTON_WIDTH,
+                  command=lambda: self.app.show_frame(FrameAddPupil)).grid(sticky=tk.S)
         tk.Button(self, text="Amend Pupil", width=BUTTON_WIDTH).grid()
         tk.Button(self, text="Search", width=BUTTON_WIDTH).grid()
         tk.Button(self, text="Quiz", width=BUTTON_WIDTH).grid()
-        tk.Button(self, text="Log Out", width=BUTTON_WIDTH, command=self.app.log_out).grid(sticky=tk.N)
+        tk.Button(self, text="Log Out", width=BUTTON_WIDTH,
+                  command=self.app.log_out).grid(sticky=tk.N)

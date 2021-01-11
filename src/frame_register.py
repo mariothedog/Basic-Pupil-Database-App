@@ -77,6 +77,8 @@ class FrameRegister(FramePage):
         with open("accounts.json", "w") as file:
             file.write(json.dumps(account_data, indent=4))
 
+        self.app.account_username = username
+
         tkMB.showinfo("Register", "Account successfully registered")
         self.entry_username.delete(0, "end")
         self.entry_password.delete(0, "end")
