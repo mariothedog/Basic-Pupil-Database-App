@@ -10,6 +10,7 @@ class Application(tk.Frame):
         self.parent = parent
         self.pack(side="top", fill="both", expand=True)
         self.frames = self.create_frames()
+        self.account = None
         self.show_frame(FrameMainMenu)
 
     def create_frames(self):

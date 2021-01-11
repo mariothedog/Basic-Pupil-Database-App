@@ -62,3 +62,5 @@ class FrameLogin(FramePage):
         
         self.entry_username.delete(0, "end")
         self.entry_password.delete(0, "end")
+        
+        self.app.account = account
