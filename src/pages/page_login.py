@@ -27,12 +27,17 @@ class PageLogin(FramePage):
         self.entry_username.grid(row=0, column=1)
         self.entry_password.grid(row=1, column=1)
 
-        button_cancel = tk.Button(self, text="Cancel", width=5, command=lambda: self.app.show_page(
-            page_main_menu.PageMainMenu))
+        button_cancel = tk.Button(
+            self, text="Cancel", width=5, command=self.cancel)
         button_login = tk.Button(
             self, text="Login", width=5, command=self.login)
         button_cancel.grid(row=1, column=0, padx=(0, 5), sticky=tk.N+tk.E)
         button_login.grid(row=1, column=1, padx=(5, 0), sticky=tk.N+tk.W)
+
+    def cancel(self):
+        self.app.show_page(page_main_menu.PageMainMenu)
+        self.entry_username.delete(0, tk.END)
+        self.entry_password.delete(0, tk.END)
 
     def login(self):
         username = self.entry_username.get()
