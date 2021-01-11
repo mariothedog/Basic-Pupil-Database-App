@@ -30,8 +30,8 @@ class PageAmendPupil(FramePage):
         frame_buttons = tk.Frame(self)
         frame_buttons.grid(columnspan=3, pady=(0, 20))
 
-        button_cancel = tk.Button(frame_buttons, text="Cancel", command=lambda: self.app.show_page(
-            page_option_menu.PageOptionMenu))
+        button_cancel = tk.Button(
+            frame_buttons, text="Cancel", command=self.cancel)
         button_amend = tk.Button(
             frame_buttons, text="Amend Pupil", command=self.amend_pupil)
         button_cancel.grid(padx=(0, 5), sticky=tk.E)
@@ -43,17 +43,14 @@ class PageAmendPupil(FramePage):
 
         self.frame_pupils = ScrollingListbox(self)
         self.frame_pupils.grid(row=3, column=1, sticky=tk.N)
-    
-    def update_list(self):
-        with open(constants.JSON_ACCOUNTS, "a+") as file:
-            file.seek(0)
-            account_json_data = file.read()
-        account_data = json.loads(account_json_data)
-        current_account_data = account_data[self.app.account_username]
-        pupils = current_account_data["pupils"]
 
-        pupil_ids = ["%d - %s" % (i + 1, p) for i, p in enumerate(pupils)]
-        self.frame_pupils.list_variable.set(pupil_ids)
+    def on_show(self):
+        self.update_list()
+
+    def cancel(self):
+        self.app.show_page(page_option_menu.PageOptionMenu)
+        self.entry_id.delete(0, tk.END)
+        self.entry_new_name.delete(0, tk.END)
 
     def amend_pupil(self):
         id = self.entry_id.get()
@@ -65,12 +62,12 @@ class PageAmendPupil(FramePage):
         elif not new_name:
             tkMB.showerror("Amend Pupil", "You must enter a new name!")
             return
-        
+
         id = int(id)
         if id <= 0:
             tkMB.showerror("Amend Pupil", "The pupil ID must be 1 or higher!")
             return
-        
+
         with open(constants.JSON_ACCOUNTS, "a+") as file:
             file.seek(0)
             account_json_data = file.read()
@@ -86,8 +83,16 @@ class PageAmendPupil(FramePage):
 
         with open("accounts.json", "w") as file:
             file.write(json.dumps(account_data, indent=4))
-        
+
         self.update_list()
 
-    def on_show(self):
-        self.update_list()
+    def update_list(self):
+        with open(constants.JSON_ACCOUNTS, "a+") as file:
+            file.seek(0)
+            account_json_data = file.read()
+        account_data = json.loads(account_json_data)
+        current_account_data = account_data[self.app.account_username]
+        pupils = current_account_data["pupils"]
+
+        pupil_ids = ["%d - %s" % (i + 1, p) for i, p in enumerate(pupils)]
+        self.frame_pupils.list_variable.set(pupil_ids)
