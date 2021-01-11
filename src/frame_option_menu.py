@@ -14,4 +14,4 @@ class FrameOptionMenu(FramePage):
         tk.Button(self, text="Amend Pupil", width=BUTTON_WIDTH).grid()
         tk.Button(self, text="Search", width=BUTTON_WIDTH).grid()
         tk.Button(self, text="Quiz", width=BUTTON_WIDTH).grid()
-        tk.Button(self, text="Log Out", width=BUTTON_WIDTH).grid(sticky=tk.N)
+        tk.Button(self, text="Log Out", width=BUTTON_WIDTH, command=self.app.log_out).grid(sticky=tk.N)
