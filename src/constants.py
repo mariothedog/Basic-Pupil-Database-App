@@ -1,4 +1,5 @@
 JSON_ACCOUNTS = "accounts.json"
+JSON_QUESTIONS = "questions.json"
 
 # Password Pattern Matches:
 # 8+ characters

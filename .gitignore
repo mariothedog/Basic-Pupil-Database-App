@@ -126,3 +126,4 @@ dmypy.json
 
 # App-specific
 accounts.json
+questions.json

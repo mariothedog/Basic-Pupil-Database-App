@@ -39,7 +39,7 @@ class PageSearchPupils(FramePage):
         self.frame_pupils = ScrollingListbox(self)
         self.frame_pupils.grid(row=3, column=1, sticky=tk.N)
 
-    def on_show(self):
+    def on_show(self, **kwargs):
         with open(constants.JSON_ACCOUNTS, "a+") as file:
             file.seek(0)
             account_json_data = file.read()

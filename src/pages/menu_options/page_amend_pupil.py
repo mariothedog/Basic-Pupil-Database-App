@@ -44,7 +44,7 @@ class PageAmendPupil(FramePage):
         self.frame_pupils = ScrollingListbox(self)
         self.frame_pupils.grid(row=3, column=1, sticky=tk.N)
 
-    def on_show(self):
+    def on_show(self, **kwargs):
         self.update_list()
 
     def cancel(self):
