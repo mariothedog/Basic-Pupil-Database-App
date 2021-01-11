@@ -18,7 +18,7 @@ class PageAddPupil(FramePage):
         frame_entry.grid(columnspan=3, pady=10)
 
         label_name = tk.Label(frame_entry, text="Pupil Name")
-        self.entry_pupil_name = tk.Entry(frame_entry, text="Pupil Name")
+        self.entry_pupil_name = tk.Entry(frame_entry)
         label_name.grid()
         self.entry_pupil_name.grid(row=0, column=1)
 
