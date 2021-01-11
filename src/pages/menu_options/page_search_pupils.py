@@ -50,10 +50,6 @@ class PageSearchPupils(FramePage):
 
         self.frame_pupils.list_variable.set(pupils)
 
-    def cancel(self):
-        self.app.show_page(page_option_menu.PageOptionMenu)
-        self.entry_search_term.delete(0, tk.END)
-
     def on_search_term_change(self, *args):
         search_term = self.search_term.get()
 
@@ -67,3 +63,7 @@ class PageSearchPupils(FramePage):
         filtered_pupils = [p for p in pupils if p.startswith(search_term)]
 
         self.frame_pupils.list_variable.set(filtered_pupils)
+
+    def cancel(self):
+        self.app.show_page(page_option_menu.PageOptionMenu)
+        self.entry_search_term.delete(0, tk.END)
