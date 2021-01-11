@@ -2,6 +2,7 @@ import tkinter as tk
 from frame_page import FramePage
 import frame_main_menu as mm
 
+
 class FrameRegister(FramePage):
     def create_widgets(self):
         for i in range(2):
@@ -23,9 +24,11 @@ class FrameRegister(FramePage):
         self.entry_password_confirm = tk.Entry(frame_entry, width=15, show="*")
         self.entry_password_confirm.grid(row=2, column=1)
 
-        tk.Button(self, text="Cancel", width=5, command=lambda: self.app.show_frame(mm.FrameMainMenu)).grid(row=1, column=0, padx=(0, 15), sticky=tk.N+tk.E)
-        tk.Button(self, text="Register", width=5, command=self.register).grid(row=1, column=1, padx=(15, 0), sticky=tk.N+tk.W)
-    
+        tk.Button(self, text="Cancel", width=5, command=lambda: self.app.show_frame(
+            mm.FrameMainMenu)).grid(row=1, column=0, padx=(0, 15), sticky=tk.N+tk.E)
+        tk.Button(self, text="Register", width=5, command=self.register).grid(
+            row=1, column=1, padx=(15, 0), sticky=tk.N+tk.W)
+
     def register(self):
         print("Username:", self.entry_username.get())
         print("Password:", self.entry_password.get())
