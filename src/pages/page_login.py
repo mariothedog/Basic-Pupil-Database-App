@@ -27,7 +27,7 @@ class PageLogin(FramePage):
         self.entry_username.grid(row=0, column=1)
         self.entry_password.grid(row=1, column=1)
 
-        button_cancel = tk.Button(self, text="Cancel", width=5, command=lambda: self.app.show_frame(
+        button_cancel = tk.Button(self, text="Cancel", width=5, command=lambda: self.app.show_page(
             page_main_menu.PageMainMenu))
         button_login = tk.Button(
             self, text="Login", width=5, command=self.login)
