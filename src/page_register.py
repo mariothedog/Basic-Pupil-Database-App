@@ -4,11 +4,11 @@ import json
 import re
 
 from frame_page import FramePage
-import frame_main_menu
+import page_main_menu
 import constants
 
 
-class FrameRegister(FramePage):
+class PageRegister(FramePage):
     def create_widgets(self):
         for i in range(2):
             self.rowconfigure(i, weight=1)
@@ -31,8 +31,8 @@ class FrameRegister(FramePage):
         self.entry_password.grid(row=1, column=1)
         self.entry_password_confirm.grid(row=2, column=1)
 
-        button_cancel = tk.Button(self, text="Cancel", width=5, command=lambda: self.app.show_frame(
-            frame_main_menu.FrameMainMenu))
+        button_cancel = tk.Button(self, text="Cancel", width=5, command=lambda: self.app.show_page(
+            page_main_menu.PageMainMenu))
         button_register = tk.Button(
             self, text="Register", width=5, command=self.register)
         button_cancel.grid(row=1, column=0, padx=(0, 15), sticky=tk.N+tk.E)
@@ -88,4 +88,4 @@ class FrameRegister(FramePage):
         self.entry_password.delete(0, tk.END)
         self.entry_password_confirm.delete(0, tk.END)
 
-        self.app.show_frame(frame_main_menu.FrameMainMenu)
+        self.app.show_page(page_main_menu.PageMainMenu)

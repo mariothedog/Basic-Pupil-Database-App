@@ -1,10 +1,10 @@
 import tkinter as tk
 
-from frame_main_menu import FrameMainMenu
-from frame_login import FrameLogin
-from frame_register import FrameRegister
-from menu_options.frame_option_menu import FrameOptionMenu
-from menu_options.frame_add_pupil import FrameAddPupil
+from page_main_menu import PageMainMenu
+from page_login import PageLogin
+from page_register import PageRegister
+from menu_options.page_option_menu import PageOptionMenu
+from menu_options.page_add_pupil import PageAddPupil
 
 
 class Application(tk.Frame):
@@ -13,23 +13,23 @@ class Application(tk.Frame):
         self.parent = parent
         self.pack(side=tk.TOP, fill=tk.BOTH, expand=True)
         self.account_username = ""
-        self.frames = self.create_frames()
-        self.show_frame(FrameMainMenu)
+        self.pages = self.create_pages()
+        self.show_page(PageMainMenu)
 
-    def create_frames(self):
-        frames = {}
-        for frame in {FrameMainMenu, FrameLogin, FrameRegister,
-                      FrameOptionMenu, FrameAddPupil}:
-            f = frame(self)
-            f.place(in_=self, relwidth=1, relheight=1)
-            frames[frame] = f
-        return frames
+    def create_pages(self):
+        pages = {}
+        for page in {PageMainMenu, PageLogin, PageRegister,
+                      PageOptionMenu, PageAddPupil}:
+            p = page(self)
+            p.place(in_=self, relwidth=1, relheight=1)
+            pages[page] = p
+        return pages
 
-    def show_frame(self, frame_page):
-        frame = self.frames[frame_page]
-        frame.on_show()
-        frame.lift()
+    def show_page(self, frame_page):
+        page = self.pages[frame_page]
+        page.on_show()
+        page.lift()
 
     def log_out(self):
         self.account_username = ""
-        self.show_frame(FrameMainMenu)
+        self.show_page(PageMainMenu)

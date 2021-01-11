@@ -4,11 +4,11 @@ import json
 
 from frame_page import FramePage
 import constants
-import frame_main_menu
-import menu_options.frame_option_menu as frame_option_menu
+import page_main_menu
+import menu_options.page_option_menu as page_option_menu
 
 
-class FrameLogin(FramePage):
+class PageLogin(FramePage):
     def create_widgets(self):
         for i in range(2):
             self.rowconfigure(i, weight=1)
@@ -28,7 +28,7 @@ class FrameLogin(FramePage):
         self.entry_password.grid(row=1, column=1)
 
         button_cancel = tk.Button(self, text="Cancel", width=5, command=lambda: self.app.show_frame(
-            frame_main_menu.FrameMainMenu))
+            page_main_menu.PageMainMenu))
         button_login = tk.Button(
             self, text="Login", width=5, command=self.login)
         button_cancel.grid(row=1, column=0, padx=(0, 5), sticky=tk.N+tk.E)
@@ -70,4 +70,4 @@ class FrameLogin(FramePage):
 
         self.app.account_username = username
 
-        self.app.show_frame(frame_option_menu.FrameOptionMenu)
+        self.app.show_page(page_option_menu.PageOptionMenu)

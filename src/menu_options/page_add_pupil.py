@@ -5,10 +5,10 @@ import json
 from frame_page import FramePage
 import constants
 from util.scrolling_listbox import ScrollingListbox
-import menu_options.frame_option_menu as frame_option_menu
+import menu_options.page_option_menu as page_option_menu
 
 
-class FrameAddPupil(FramePage):
+class PageAddPupil(FramePage):
     def create_widgets(self):
         self.rowconfigure(3, weight=1)
         for i in range(3):
@@ -25,8 +25,8 @@ class FrameAddPupil(FramePage):
         frame_buttons = tk.Frame(self)
         frame_buttons.grid(columnspan=3, pady=(0, 20))
 
-        button_cancel = tk.Button(frame_buttons, text="Cancel", command=lambda: self.app.show_frame(
-            frame_option_menu.FrameOptionMenu))
+        button_cancel = tk.Button(frame_buttons, text="Cancel", command=lambda: self.app.show_page(
+            page_option_menu.PageOptionMenu))
         button_add = tk.Button(
             frame_buttons, text="Add Pupil", command=self.add_pupil)
         button_cancel.grid(padx=(0, 5), sticky=tk.E)

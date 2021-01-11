@@ -1,10 +1,10 @@
 import tkinter as tk
 from frame_page import FramePage
-import frame_login
-import frame_register
+import page_login
+import page_register
 
 
-class FrameMainMenu(FramePage):
+class PageMainMenu(FramePage):
     def create_widgets(self):
         self.rowconfigure(0, weight=1)
         self.rowconfigure(1, weight=1)
@@ -18,9 +18,9 @@ class FrameMainMenu(FramePage):
         frame_entry.grid(row=1, column=0, pady=(10, 0), sticky=tk.N)
 
         button_login = tk.Button(frame_entry, text="Login", width=6,
-                                 command=lambda: self.app.show_frame(frame_login.FrameLogin))
+                                 command=lambda: self.app.show_page(page_login.PageLogin))
         button_register = tk.Button(frame_entry, text="Register", width=6,
-                                    command=lambda: self.app.show_frame(frame_register.FrameRegister))
+                                    command=lambda: self.app.show_page(page_register.PageRegister))
         button_exit = tk.Button(frame_entry, text="Exit",
                                 width=6, command=self.app.parent.destroy)
         button_login.grid(padx=5, pady=5)
