@@ -4,10 +4,9 @@ import frame_main_menu as mm
 
 class FrameLogin(FramePage):
     def create_widgets(self):
-        self.rowconfigure(0, weight=1)
-        self.rowconfigure(1, weight=1)
-        self.columnconfigure(0, weight=1)
-        self.columnconfigure(1, weight=1)
+        for i in range(2):
+            self.rowconfigure(i, weight=1)
+            self.columnconfigure(i, weight=1)
 
         frame_entry = tk.Frame(self, relief="ridge", borderwidth=1)
         frame_entry.grid(row=0, column=0, columnspan=2, pady=(0, 5), sticky=tk.S)
