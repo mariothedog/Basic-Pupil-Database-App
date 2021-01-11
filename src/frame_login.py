@@ -1,6 +1,10 @@
 import tkinter as tk
+import tkinter.messagebox as tkMB
+import json
+
 from frame_page import FramePage
 import frame_main_menu as mm
+import constants
 
 
 class FrameLogin(FramePage):
@@ -26,6 +30,31 @@ class FrameLogin(FramePage):
             row=1, column=1, padx=(5, 0), sticky=tk.N+tk.W)
 
     def login(self):
-        print("Username:", self.entry_username.get())
-        print("Password:", self.entry_password.get())
-        print()
+        username = self.entry_username.get()
+        password = self.entry_password.get()
+
+        if not username:
+            tkMB.showerror("Register", "You must enter a username!")
+            return
+        elif not password:
+            tkMB.showerror("Register", "You must enter a password!")
+            return
+
+        with open(constants.JSON_ACCOUNTS, "a+") as file:
+            file.seek(0)
+            account_json_data = file.read()
+        try:
+            account_data = json.loads(account_json_data)
+        except json.decoder.JSONDecodeError:
+            account_data = {}
+
+        if username not in account_data:
+            tkMB.showerror("Login", "Username not recognised!\n"
+                                    "Remember to register first if you have "
+                                    "not done so already.")
+            return
+
+        account = account_data[username]
+        if password != account["password"]:
+            tkMB.showerror("Login", "Incorrect password!")
+            return
