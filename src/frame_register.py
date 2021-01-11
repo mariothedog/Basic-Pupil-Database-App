@@ -62,7 +62,8 @@ class FrameRegister(FramePage):
             self.entry_password_confirm.delete(0, "end")
             return
 
-        with open(constants.JSON_ACCOUNTS, "w+") as file:
+        with open(constants.JSON_ACCOUNTS, "a+") as file:
+            file.seek(0)
             account_json_data = file.read()
         try:
             account_data = json.loads(account_json_data)
