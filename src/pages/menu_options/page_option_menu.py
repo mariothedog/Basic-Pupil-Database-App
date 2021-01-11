@@ -3,7 +3,7 @@ import tkinter as tk
 from pages.frame_page import FramePage
 from pages.menu_options.page_add_pupil import PageAddPupil
 from pages.menu_options.page_amend_pupil import PageAmendPupil
-from pages.page_search_pupils import PageSearchPupils
+from pages.menu_options.page_search_pupils import PageSearchPupils
 
 
 class PageOptionMenu(FramePage):

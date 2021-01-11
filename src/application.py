@@ -6,7 +6,7 @@ from pages.page_register import PageRegister
 from pages.menu_options.page_option_menu import PageOptionMenu
 from pages.menu_options.page_add_pupil import PageAddPupil
 from pages.menu_options.page_amend_pupil import PageAmendPupil
-from pages.page_search_pupils import PageSearchPupils
+from pages.menu_options.page_search_pupils import PageSearchPupils
 
 
 class Application(tk.Frame):
