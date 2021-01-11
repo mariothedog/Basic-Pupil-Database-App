@@ -3,8 +3,9 @@ import tkinter.messagebox as tkMB
 import json
 
 from frame_page import FramePage
-import frame_main_menu as mm
 import constants
+import frame_main_menu as mm
+import frame_option_menu as om
 
 
 class FrameLogin(FramePage):
@@ -58,3 +59,5 @@ class FrameLogin(FramePage):
         if password != account["password"]:
             tkMB.showerror("Login", "Incorrect password!")
             return
+        
+        self.app.show_frame(om.FrameOptionMenu)
