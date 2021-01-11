@@ -10,5 +10,5 @@ class FramePage(tk.Frame):
     def create_widgets(self):
         raise NotImplementedError
 
-    def on_show(self):
+    def on_show(self, **kwargs):
         pass

@@ -4,6 +4,7 @@ import json
 from pages.frame_page import FramePage
 import constants
 import pages.menu_options.page_option_menu as page_option_menu
+import pages.menu_options.page_quiz_over as page_quiz_over
 
 
 class PageQuiz(FramePage):
@@ -37,7 +38,7 @@ class PageQuiz(FramePage):
         self.button_answers = []
         self.label_answers = []
     
-    def on_show(self):
+    def on_show(self, **kwargs):
         self.setup_quiz()
 
     def cancel(self):
@@ -51,8 +52,8 @@ class PageQuiz(FramePage):
         self.score = 0
         self.start_next_question()
     
-    def end_quiz(self): # TODO
-        print("Quiz ended!")
+    def end_quiz(self):
+        self.app.show_page(page_quiz_over.PageQuizOver, questions_data=self.questions_data, score=self.score)
 
     def start_next_question(self):
         question_data = self.questions_data[self.question_index]

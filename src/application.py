@@ -8,6 +8,7 @@ from pages.menu_options.page_add_pupil import PageAddPupil
 from pages.menu_options.page_amend_pupil import PageAmendPupil
 from pages.menu_options.page_search_pupils import PageSearchPupils
 from pages.menu_options.page_quiz import PageQuiz
+from pages.menu_options.page_quiz_over import PageQuizOver
 
 
 class Application(tk.Frame):
@@ -23,15 +24,15 @@ class Application(tk.Frame):
         pages = {}
         for page in {PageMainMenu, PageLogin, PageRegister, PageOptionMenu,
                      PageAddPupil, PageAmendPupil, PageSearchPupils,
-                     PageQuiz}:
+                     PageQuiz, PageQuizOver}:
             p = page(self)
             p.place(in_=self, relwidth=1, relheight=1)
             pages[page] = p
         return pages
 
-    def show_page(self, frame_page):
+    def show_page(self, frame_page, **kwargs):
         page = self.pages[frame_page]
-        page.on_show()
+        page.on_show(**kwargs)
         page.lift()
 
     def log_out(self):
