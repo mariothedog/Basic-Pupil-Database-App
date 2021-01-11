@@ -24,3 +24,7 @@ class Application(tk.Frame):
 
     def show_frame(self, frame_page):
         self.frames[frame_page].lift()
+    
+    def log_out(self):
+        self.account = None
+        self.show_frame(FrameMainMenu)
