@@ -8,12 +8,10 @@ import pages.menu_options.page_option_menu as page_option_menu
 
 class PageQuiz(FramePage):
     def create_widgets(self):
-        for i in range(2):
-            self.rowconfigure(i, weight=1)
         self.columnconfigure(1, weight=1)
 
         frame_top = tk.Frame(self)
-        frame_top.grid(columnspan=3, pady=(0, 20), sticky=tk.S)
+        frame_top.grid(columnspan=3, pady=20, sticky=tk.N)
 
         cancel_button = tk.Button(
             frame_top, text="Cancel", command=self.cancel)
@@ -33,6 +31,8 @@ class PageQuiz(FramePage):
 
         self.frame_answers = tk.Frame(self, relief=tk.RIDGE, borderwidth=1)
         self.frame_answers.grid(row=1, column=0, columnspan=2, sticky=tk.N)
+
+        self.frame_answers.columnconfigure(1, minsize=50)
 
         self.button_answers = []
         self.label_answers = []
