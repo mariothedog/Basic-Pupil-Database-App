@@ -2,10 +2,10 @@ import tkinter as tk
 import tkinter.messagebox as tkMB
 import json
 
-from frame_page import FramePage
+from pages.frame_page import FramePage
 import constants
 from util.scrolling_listbox import ScrollingListbox
-import menu_options.page_option_menu as page_option_menu
+import pages.menu_options.page_option_menu as page_option_menu
 
 
 class PageAddPupil(FramePage):

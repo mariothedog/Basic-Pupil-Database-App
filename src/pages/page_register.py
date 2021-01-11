@@ -3,8 +3,8 @@ import tkinter.messagebox as tkMB
 import json
 import re
 
-from frame_page import FramePage
-import page_main_menu
+from pages.frame_page import FramePage
+import pages.page_main_menu as page_main_menu
 import constants
 
 

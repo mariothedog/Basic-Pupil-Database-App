@@ -1,7 +1,7 @@
 import tkinter as tk
 
-from frame_page import FramePage
-from menu_options.page_add_pupil import PageAddPupil
+from pages.frame_page import FramePage
+from pages.menu_options.page_add_pupil import PageAddPupil
 
 
 class PageOptionMenu(FramePage):

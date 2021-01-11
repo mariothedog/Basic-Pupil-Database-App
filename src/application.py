@@ -1,10 +1,10 @@
 import tkinter as tk
 
-from page_main_menu import PageMainMenu
-from page_login import PageLogin
-from page_register import PageRegister
-from menu_options.page_option_menu import PageOptionMenu
-from menu_options.page_add_pupil import PageAddPupil
+from pages.page_main_menu import PageMainMenu
+from pages.page_login import PageLogin
+from pages.page_register import PageRegister
+from pages.menu_options.page_option_menu import PageOptionMenu
+from pages.menu_options.page_add_pupil import PageAddPupil
 
 
 class Application(tk.Frame):

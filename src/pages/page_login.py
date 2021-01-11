@@ -2,10 +2,10 @@ import tkinter as tk
 import tkinter.messagebox as tkMB
 import json
 
-from frame_page import FramePage
+from pages.frame_page import FramePage
 import constants
-import page_main_menu
-import menu_options.page_option_menu as page_option_menu
+import pages.page_main_menu as page_main_menu
+import pages.menu_options.page_option_menu as page_option_menu
 
 
 class PageLogin(FramePage):

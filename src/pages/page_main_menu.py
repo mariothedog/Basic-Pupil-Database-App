@@ -1,7 +1,7 @@
 import tkinter as tk
-from frame_page import FramePage
-import page_login
-import page_register
+from pages.frame_page import FramePage
+import pages.page_login as page_login
+import pages.page_register as page_register
 
 
 class PageMainMenu(FramePage):
