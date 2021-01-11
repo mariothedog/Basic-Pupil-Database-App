@@ -2,6 +2,7 @@ import tkinter as tk
 from frame_main_menu import FrameMainMenu
 from frame_login import FrameLogin
 from frame_register import FrameRegister
+from frame_option_menu import FrameOptionMenu
 
 
 class Application(tk.Frame):
@@ -15,7 +16,7 @@ class Application(tk.Frame):
 
     def create_frames(self):
         frames = {}
-        for frame in {FrameMainMenu, FrameLogin, FrameRegister}:
+        for frame in {FrameMainMenu, FrameLogin, FrameRegister, FrameOptionMenu}:
             f = frame(self)
             f.place(in_=self, relwidth=1, relheight=1)
             frames[frame] = f

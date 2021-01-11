@@ -3,8 +3,9 @@ import tkinter.messagebox as tkMB
 import json
 
 from frame_page import FramePage
-import frame_main_menu as mm
 import constants
+import frame_main_menu as mm
+import frame_option_menu as om
 
 
 class FrameLogin(FramePage):
@@ -64,3 +65,5 @@ class FrameLogin(FramePage):
         self.entry_password.delete(0, "end")
         
         self.app.account = account
+        
+        self.app.show_frame(om.FrameOptionMenu)
