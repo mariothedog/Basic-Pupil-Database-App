@@ -49,7 +49,7 @@ class Application(tk.Frame):
         self.entry_password = tk.Entry(frame_entry, width=15, show="*")
         self.entry_password.grid(row=1, column=1)
 
-        tk.Button(self.frame_login, text="Cancel", width=5, command=self.parent.destroy).grid(row=1, column=0, padx=(0, 5), sticky=tk.N+tk.E)
+        tk.Button(self.frame_login, text="Cancel", width=5, command=self.frame_main.lift).grid(row=1, column=0, padx=(0, 5), sticky=tk.N+tk.E)
         tk.Button(self.frame_login, text="Login", width=5, command=self.login).grid(row=1, column=1, padx=(5, 0), sticky=tk.N+tk.W)
 
     def login(self):
