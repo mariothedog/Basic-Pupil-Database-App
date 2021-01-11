@@ -7,6 +7,7 @@ from pages.menu_options.page_option_menu import PageOptionMenu
 from pages.menu_options.page_add_pupil import PageAddPupil
 from pages.menu_options.page_amend_pupil import PageAmendPupil
 from pages.menu_options.page_search_pupils import PageSearchPupils
+from pages.menu_options.page_quiz import PageQuiz
 
 
 class Application(tk.Frame):
@@ -21,7 +22,8 @@ class Application(tk.Frame):
     def create_pages(self):
         pages = {}
         for page in {PageMainMenu, PageLogin, PageRegister, PageOptionMenu,
-                     PageAddPupil, PageAmendPupil, PageSearchPupils}:
+                     PageAddPupil, PageAmendPupil, PageSearchPupils,
+                     PageQuiz}:
             p = page(self)
             p.place(in_=self, relwidth=1, relheight=1)
             pages[page] = p
