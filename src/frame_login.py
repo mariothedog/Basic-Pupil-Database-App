@@ -9,7 +9,7 @@ class FrameLogin(FramePage):
             self.columnconfigure(i, weight=1)
 
         frame_entry = tk.Frame(self, relief="ridge", borderwidth=1)
-        frame_entry.grid(row=0, column=0, columnspan=2, pady=(0, 5), sticky=tk.S)
+        frame_entry.grid(columnspan=2, pady=(0, 5), sticky=tk.S)
 
         tk.Label(frame_entry, text="Username").grid()
         self.entry_username = tk.Entry(frame_entry, width=15)
