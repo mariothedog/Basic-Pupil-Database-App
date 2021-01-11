@@ -5,7 +5,7 @@ import json
 from frame_page import FramePage
 import constants
 import frame_main_menu
-import frame_option_menu
+import menu_options.frame_option_menu as frame_option_menu
 
 
 class FrameLogin(FramePage):
