@@ -21,16 +21,16 @@ class PageSearchPupils(FramePage):
         self.search_term.trace_add("write", self.on_search_term_change)
 
         label_search_term = tk.Label(frame_entry, text="Search")
-        entry_search_term = tk.Entry(
+        self.entry_search_term = tk.Entry(
             frame_entry, textvariable=self.search_term)
         label_search_term.grid()
-        entry_search_term.grid(row=0, column=1)
+        self.entry_search_term.grid(row=0, column=1)
 
         frame_buttons = tk.Frame(self)
         frame_buttons.grid(columnspan=3, pady=(0, 20))
 
-        button_cancel = tk.Button(frame_buttons, text="Cancel", command=lambda: self.app.show_page(
-            page_option_menu.PageOptionMenu))
+        button_cancel = tk.Button(
+            frame_buttons, text="Cancel", command=self.cancel)
         button_cancel.grid(padx=(0, 5), sticky=tk.E)
 
         label_header_pupils = tk.Label(
@@ -49,6 +49,10 @@ class PageSearchPupils(FramePage):
         pupils = current_account_data["pupils"]
 
         self.frame_pupils.list_variable.set(pupils)
+
+    def cancel(self):
+        self.app.show_page(page_option_menu.PageOptionMenu)
+        self.entry_search_term.delete(0, tk.END)
 
     def on_search_term_change(self, *args):
         search_term = self.search_term.get()
