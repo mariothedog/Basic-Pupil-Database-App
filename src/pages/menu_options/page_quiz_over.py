@@ -21,16 +21,17 @@ class PageQuizOver(FramePage):
 
         button_finish = tk.Button(self, text="Finish", command=self.finish)
         button_finish.grid(sticky=tk.N)
-    
+
     def finish(self):
         self.app.show_page(page_option_menu.PageOptionMenu)
-    
+
     def on_show(self, **kwargs):
         questions_data = kwargs["questions_data"]
         score = kwargs["score"]
         num_questions = len(questions_data)
 
-        self.label_total_score.config(text="Total Score: %d/%d" % (score, num_questions))
+        self.label_total_score.config(
+            text="Total Score: %d/%d" % (score, num_questions))
 
         if score <= num_questions * 0.2:
             message = "Terrible!"

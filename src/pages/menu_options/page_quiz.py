@@ -21,8 +21,10 @@ class PageQuiz(FramePage):
         frame_questions = tk.Frame(frame_top)
         frame_questions.grid(row=0, column=1, padx=30)
 
-        self.label_question_num = tk.Label(frame_questions, font=("TkDefaultFont", 12))
-        self.label_question = tk.Label(frame_questions, font=("TkDefaultFont", 10), wraplength=150)
+        self.label_question_num = tk.Label(
+            frame_questions, font=("TkDefaultFont", 12))
+        self.label_question = tk.Label(
+            frame_questions, font=("TkDefaultFont", 10), wraplength=150)
         self.label_question_num.grid()
         self.label_question.grid(row=1, column=0)
 
@@ -37,13 +39,13 @@ class PageQuiz(FramePage):
 
         self.button_answers = []
         self.label_answers = []
-    
+
     def on_show(self, **kwargs):
         self.setup_quiz()
 
     def cancel(self):
         self.app.show_page(page_option_menu.PageOptionMenu)
-    
+
     def setup_quiz(self):
         with open(constants.JSON_QUESTIONS, "a+") as file:
             file.seek(0)
@@ -51,9 +53,10 @@ class PageQuiz(FramePage):
         self.question_index = 0
         self.score = 0
         self.start_next_question()
-    
+
     def end_quiz(self):
-        self.app.show_page(page_quiz_over.PageQuizOver, questions_data=self.questions_data, score=self.score)
+        self.app.show_page(page_quiz_over.PageQuizOver,
+                           questions_data=self.questions_data, score=self.score)
 
     def start_next_question(self):
         question_data = self.questions_data[self.question_index]
@@ -71,19 +74,20 @@ class PageQuiz(FramePage):
             button.grid_forget()
         for label in self.label_answers:
             label.grid_forget()
-        
+
         self.button_answers = []
         self.label_answers = []
 
         for i in range(num_answers):
             letter = chr(65 + i)
-            button = tk.Button(self.frame_answers, width=2, text=letter, command=lambda i=i: self.answer_question(question_data, i))
+            button = tk.Button(self.frame_answers, width=2, text=letter,
+                               command=lambda i=i: self.answer_question(question_data, i))
             label = tk.Label(self.frame_answers, text=answers[i])
             button.grid()
             label.grid(row=i, column=1, padx=5)
             self.button_answers.append(button)
             self.label_answers.append(label)
-    
+
     def answer_question(self, question_data, answer_index):
         if answer_index == question_data["correct_answer_index"]:
             self.score += 1
