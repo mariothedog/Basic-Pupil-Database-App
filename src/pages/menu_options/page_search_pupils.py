@@ -1,5 +1,4 @@
 import tkinter as tk
-import tkinter.messagebox as tkMB
 import json
 
 from pages.frame_page import FramePage
