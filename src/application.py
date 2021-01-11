@@ -9,11 +9,11 @@ class Application(tk.Frame):
         self.frame_main.lift()
     
     def create_widgets(self):
-        self.frame_main = tk.Frame(self)
-        self.frame_main.place(relwidth=1, relheight=1)
+        self.frame_main = tk.Frame()
+        self.frame_main.place(in_=self, relwidth=1, relheight=1)
 
-        self.frame_login = tk.Frame(self)
-        self.frame_login.place(relwidth=1, relheight=1)
+        self.frame_login = tk.Frame()
+        self.frame_login.place(in_=self, relwidth=1, relheight=1)
 
         self.create_main_frame()
         self.create_login_frame()
