@@ -50,15 +50,20 @@ class FrameRegister(FramePage):
                                         "- Minimum length of 8 characters\n"
                                         "- At least one uppercase letter\n"
                                         "- At least one number"))
+            self.entry_password.delete(0, "end")
+            self.entry_password_confirm.delete(0, "end")
             return
         elif not password_confirmed:
             tkMB.showerror("Register", "You must confirm your password!")
             return
         elif password != password_confirmed:
             tkMB.showerror("Register", "Your passwords do not match!")
+            self.entry_password.delete(0, "end")
+            self.entry_password_confirm.delete(0, "end")
             return
 
-        with open(constants.JSON_ACCOUNTS, "w+") as file:
+        with open(constants.JSON_ACCOUNTS, "a+") as file:
+            file.seek(0)
             account_json_data = file.read()
         try:
             account_data = json.loads(account_json_data)
@@ -73,5 +78,8 @@ class FrameRegister(FramePage):
             file.write(json.dumps(account_data, indent=4))
 
         tkMB.showinfo("Register", "Account successfully registered")
+        self.entry_username.delete(0, "end")
+        self.entry_password.delete(0, "end")
+        self.entry_password_confirm.delete(0, "end")
 
         self.app.show_frame(mm.FrameMainMenu)

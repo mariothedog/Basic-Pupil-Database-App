@@ -58,6 +58,12 @@ class FrameLogin(FramePage):
         account = account_data[username]
         if password != account["password"]:
             tkMB.showerror("Login", "Incorrect password!")
+            self.entry_password.delete(0, "end")
             return
+        
+        self.entry_username.delete(0, "end")
+        self.entry_password.delete(0, "end")
+        
+        self.app.account = account
         
         self.app.show_frame(om.FrameOptionMenu)
