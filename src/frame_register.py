@@ -4,10 +4,8 @@ import frame_main_menu as mm
 
 class FrameRegister(FramePage):
     def create_widgets(self):
-        # TODO: Refactor grid configuration
         for i in range(2):
             self.rowconfigure(i, weight=1)
-        for i in range(2):
             self.columnconfigure(i, weight=1)
 
         frame_entry = tk.Frame(self, relief="ridge", borderwidth=1)
