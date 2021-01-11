@@ -69,7 +69,6 @@ class PageAddPupil(FramePage):
         with open("accounts.json", "w") as file:
             file.write(json.dumps(account_data, indent=4))
 
-        tkMB.showinfo("Add Pupil", "Pupil successfully added")
         self.entry_pupil_name.delete(0, tk.END)
 
         self.frame_pupils.list_variable.set(pupils)
