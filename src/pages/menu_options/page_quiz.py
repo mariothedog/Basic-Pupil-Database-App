@@ -7,6 +7,12 @@ import pages.menu_options.page_option_menu as page_option_menu
 
 
 class PageQuiz(FramePage):
+    def __init__(self, app, *args, **kwargs):
+        super().__init__(app, *args, **kwargs)
+        with open(constants.JSON_QUESTIONS, "a+") as file:
+            file.seek(0)
+            self.questions_data = json.load(file)
+
     def create_widgets(self):
         for i in range(2):
             self.rowconfigure(i, weight=1)
