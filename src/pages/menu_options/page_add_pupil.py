@@ -25,8 +25,8 @@ class PageAddPupil(FramePage):
         frame_buttons = tk.Frame(self)
         frame_buttons.grid(columnspan=3, pady=(0, 20))
 
-        button_cancel = tk.Button(frame_buttons, text="Cancel", command=lambda: self.app.show_page(
-            page_option_menu.PageOptionMenu))
+        button_cancel = tk.Button(
+            frame_buttons, text="Cancel", command=self.cancel)
         button_add = tk.Button(
             frame_buttons, text="Add Pupil", command=self.add_pupil)
         button_cancel.grid(padx=(0, 5), sticky=tk.E)
@@ -38,6 +38,10 @@ class PageAddPupil(FramePage):
 
         self.frame_pupils = ScrollingListbox(self)
         self.frame_pupils.grid(row=3, column=1, sticky=tk.N)
+    
+    def cancel(self):
+        self.app.show_page(page_option_menu.PageOptionMenu)
+        self.entry_pupil_name.delete(0, tk.END)
 
     def add_pupil(self):
         name = self.entry_pupil_name.get()
