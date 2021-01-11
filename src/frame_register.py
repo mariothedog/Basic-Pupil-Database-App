@@ -5,12 +5,7 @@ import re
 
 from frame_page import FramePage
 import frame_main_menu as mm
-
-# Password Pattern Matches:
-# 8+ characters
-# At least one uppercase letter
-# At least one number
-RE_PASSWORD = "^(?=.*?[A-Z])(?=.*?[0-9]).{8,}$"
+import constants
 
 
 class FrameRegister(FramePage):
@@ -50,7 +45,7 @@ class FrameRegister(FramePage):
         elif not password:
             tkMB.showerror("Register", "You must enter a password!")
             return
-        elif not re.match(RE_PASSWORD, password):
+        elif not re.match(constants.RE_PASSWORD, password):
             tkMB.showerror("Register", ("Your password must meet the following criteria:\n"
                                         "- Minimum length of 8 characters\n"
                                         "- At least one uppercase letter\n"
@@ -63,7 +58,7 @@ class FrameRegister(FramePage):
             tkMB.showerror("Register", "Your passwords do not match!")
             return
 
-        with open("accounts.json", "w+") as file:
+        with open(constants.JSON_ACCOUNTS, "w+") as file:
             account_json_data = file.read()
         try:
             account_data = json.loads(account_json_data)
