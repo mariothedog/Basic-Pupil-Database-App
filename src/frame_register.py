@@ -6,6 +6,12 @@ import re
 from frame_page import FramePage
 import frame_main_menu as mm
 
+# Password Pattern Matches:
+# 8+ characters
+# At least one uppercase letter
+# At least one number
+RE_PASSWORD = "^(?=.*?[A-Z])(?=.*?[0-9]).{8,}$"
+
 
 class FrameRegister(FramePage):
     def create_widgets(self):
@@ -44,7 +50,7 @@ class FrameRegister(FramePage):
         elif not password:
             tkMB.showerror("Register", "You must enter a password!")
             return
-        elif not re.match("^(?=.*?[A-Z])(?=.*?[0-9]).{8,}$", password):
+        elif not re.match(RE_PASSWORD, password):
             tkMB.showerror("Register", ("Your password must meet the following criteria:\n"
                                         "- Minimum length of 8 characters\n"
                                         "- At least one uppercase letter\n"
