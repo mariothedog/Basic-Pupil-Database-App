@@ -9,10 +9,9 @@ class ScrollingListbox(tk.Frame):
 
     def create_widgets(self):
         scrollbar = tk.Scrollbar(self)
-        scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
-
         listbox = tk.Listbox(self, yscrollcommand=scrollbar.set,
-                                  listvariable=self.list_variable, bg="SystemButtonFace")
+                             listvariable=self.list_variable, bg="SystemButtonFace")
+        scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
         listbox.pack()
 
         scrollbar.config(command=listbox.yview)
