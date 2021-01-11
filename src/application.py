@@ -5,6 +5,7 @@ from pages.page_login import PageLogin
 from pages.page_register import PageRegister
 from pages.menu_options.page_option_menu import PageOptionMenu
 from pages.menu_options.page_add_pupil import PageAddPupil
+from pages.menu_options.page_amend_pupil import PageAmendPupil
 
 
 class Application(tk.Frame):
@@ -18,8 +19,8 @@ class Application(tk.Frame):
 
     def create_pages(self):
         pages = {}
-        for page in {PageMainMenu, PageLogin, PageRegister,
-                      PageOptionMenu, PageAddPupil}:
+        for page in {PageMainMenu, PageLogin, PageRegister, PageOptionMenu,
+                     PageAddPupil, PageAmendPupil}:
             p = page(self)
             p.place(in_=self, relwidth=1, relheight=1)
             pages[page] = p
