@@ -4,8 +4,8 @@ import json
 
 from frame_page import FramePage
 import constants
-import frame_main_menu as mm
-import frame_option_menu as om
+import frame_main_menu
+import frame_option_menu
 
 
 class FrameLogin(FramePage):
@@ -26,7 +26,7 @@ class FrameLogin(FramePage):
         self.entry_password.grid(row=1, column=1)
 
         tk.Button(self, text="Cancel", width=5, command=lambda: self.app.show_frame(
-            mm.FrameMainMenu)).grid(row=1, column=0, padx=(0, 5), sticky=tk.N+tk.E)
+            frame_main_menu.FrameMainMenu)).grid(row=1, column=0, padx=(0, 5), sticky=tk.N+tk.E)
         tk.Button(self, text="Login", width=5, command=self.login).grid(
             row=1, column=1, padx=(5, 0), sticky=tk.N+tk.W)
 
@@ -60,10 +60,10 @@ class FrameLogin(FramePage):
             tkMB.showerror("Login", "Incorrect password!")
             self.entry_password.delete(0, "end")
             return
-        
+
         self.entry_username.delete(0, "end")
         self.entry_password.delete(0, "end")
-        
+
         self.app.account = account
-        
-        self.app.show_frame(om.FrameOptionMenu)
+
+        self.app.show_frame(frame_option_menu.FrameOptionMenu)
