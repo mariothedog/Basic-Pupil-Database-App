@@ -1,4 +1,8 @@
 import tkinter as tk
+import tkinter.messagebox as tkMB
+import json
+import re
+
 from frame_page import FramePage
 import frame_main_menu as mm
 
@@ -30,7 +34,43 @@ class FrameRegister(FramePage):
             row=1, column=1, padx=(15, 0), sticky=tk.N+tk.W)
 
     def register(self):
-        print("Username:", self.entry_username.get())
-        print("Password:", self.entry_password.get())
-        print("Re-entered Password:", self.entry_password_confirm.get())
-        print()
+        username = self.entry_username.get()
+        password = self.entry_password.get()
+        password_confirmed = self.entry_password_confirm.get()
+
+        if not username:
+            tkMB.showerror("Register", "You must enter a username!")
+            return
+        elif not password:
+            tkMB.showerror("Register", "You must enter a password!")
+            return
+        elif not re.match("^(?=.*?[A-Z])(?=.*?[0-9]).{8,}$", password):
+            tkMB.showerror("Register", ("Your password must meet the following criteria:\n"
+                                        "- Minimum length of 8 characters\n"
+                                        "- At least one uppercase letter\n"
+                                        "- At least one number"))
+            return
+        elif not password_confirmed:
+            tkMB.showerror("Register", "You must confirm your password!")
+            return
+        elif password != password_confirmed:
+            tkMB.showerror("Register", "Your passwords do not match!")
+            return
+
+        with open("accounts.json", "w+") as file:
+            account_json_data = file.read()
+        try:
+            account_data = json.loads(account_json_data)
+        except json.decoder.JSONDecodeError:
+            account_data = {}
+
+        account_data[self.entry_username.get()] = {
+            "password": self.entry_password.get(),
+            "pupils": []
+        }
+        with open("accounts.json", "w") as file:
+            file.write(json.dumps(account_data, indent=4))
+
+        tkMB.showinfo("Register", "Account successfully registered")
+
+        self.app.show_frame(mm.FrameMainMenu)
