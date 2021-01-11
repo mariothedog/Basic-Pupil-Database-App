@@ -11,7 +11,7 @@ class Application(tk.Frame):
     def __init__(self, parent=None, *args, **kwargs):
         tk.Frame.__init__(self, parent, *args, **kwargs)
         self.parent = parent
-        self.pack(side="top", fill="both", expand=True)
+        self.pack(side=tk.TOP, fill=tk.BOTH, expand=True)
         self.account_username = ""
         self.frames = self.create_frames()
         self.show_frame(FrameMainMenu)

@@ -14,7 +14,7 @@ class FrameAddPupil(FramePage):
         for i in range(3):
             self.columnconfigure(i, weight=1)
 
-        frame_entry = tk.Frame(self, relief="ridge", borderwidth=1)
+        frame_entry = tk.Frame(self, relief=tk.RIDGE, borderwidth=1)
         frame_entry.grid(columnspan=3, pady=10)
 
         tk.Label(frame_entry, text="Pupil Name").grid()

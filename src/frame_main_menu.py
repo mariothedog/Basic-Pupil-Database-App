@@ -13,7 +13,7 @@ class FrameMainMenu(FramePage):
         tk.Label(self, text="Pupil Database", font=(
             "TkDefaultFont", 16)).grid(sticky=tk.S)
 
-        frame_entry = tk.Frame(self, relief="ridge", borderwidth=1)
+        frame_entry = tk.Frame(self, relief=tk.RIDGE, borderwidth=1)
         frame_entry.grid(row=1, column=0, pady=(10, 0), sticky=tk.N)
 
         tk.Button(frame_entry, text="Login", width=6, command=lambda: self.app.show_frame(

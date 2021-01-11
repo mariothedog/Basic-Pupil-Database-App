@@ -14,7 +14,7 @@ class FrameRegister(FramePage):
             self.rowconfigure(i, weight=1)
             self.columnconfigure(i, weight=1)
 
-        frame_entry = tk.Frame(self, relief="ridge", borderwidth=1)
+        frame_entry = tk.Frame(self, relief=tk.RIDGE, borderwidth=1)
         frame_entry.grid(columnspan=2, pady=(0, 5), sticky=tk.S)
 
         tk.Label(frame_entry, text="Username").grid()
@@ -50,16 +50,16 @@ class FrameRegister(FramePage):
                                         "- Minimum length of 8 characters\n"
                                         "- At least one uppercase letter\n"
                                         "- At least one number"))
-            self.entry_password.delete(0, "end")
-            self.entry_password_confirm.delete(0, "end")
+            self.entry_password.delete(0, tk.END)
+            self.entry_password_confirm.delete(0, tk.END)
             return
         elif not password_confirmed:
             tkMB.showerror("Register", "You must confirm your password!")
             return
         elif password != password_confirmed:
             tkMB.showerror("Register", "Your passwords do not match!")
-            self.entry_password.delete(0, "end")
-            self.entry_password_confirm.delete(0, "end")
+            self.entry_password.delete(0, tk.END)
+            self.entry_password_confirm.delete(0, tk.END)
             return
 
         with open(constants.JSON_ACCOUNTS, "a+") as file:
@@ -80,8 +80,8 @@ class FrameRegister(FramePage):
         self.app.account_username = username
 
         tkMB.showinfo("Register", "Account successfully registered")
-        self.entry_username.delete(0, "end")
-        self.entry_password.delete(0, "end")
-        self.entry_password_confirm.delete(0, "end")
+        self.entry_username.delete(0, tk.END)
+        self.entry_password.delete(0, tk.END)
+        self.entry_password_confirm.delete(0, tk.END)
 
         self.app.show_frame(frame_main_menu.FrameMainMenu)

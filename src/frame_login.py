@@ -14,7 +14,7 @@ class FrameLogin(FramePage):
             self.rowconfigure(i, weight=1)
             self.columnconfigure(i, weight=1)
 
-        frame_entry = tk.Frame(self, relief="ridge", borderwidth=1)
+        frame_entry = tk.Frame(self, relief=tk.RIDGE, borderwidth=1)
         frame_entry.grid(columnspan=2, pady=(0, 5), sticky=tk.S)
 
         tk.Label(frame_entry, text="Username").grid()
@@ -58,11 +58,11 @@ class FrameLogin(FramePage):
         account = account_data[username]
         if password != account["password"]:
             tkMB.showerror("Login", "Incorrect password!")
-            self.entry_password.delete(0, "end")
+            self.entry_password.delete(0, tk.END)
             return
 
-        self.entry_username.delete(0, "end")
-        self.entry_password.delete(0, "end")
+        self.entry_username.delete(0, tk.END)
+        self.entry_password.delete(0, tk.END)
 
         self.app.account_username = username
 
