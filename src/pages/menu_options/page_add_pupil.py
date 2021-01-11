@@ -38,7 +38,17 @@ class PageAddPupil(FramePage):
 
         self.frame_pupils = ScrollingListbox(self)
         self.frame_pupils.grid(row=3, column=1, sticky=tk.N)
-    
+
+    def on_show(self):
+        with open(constants.JSON_ACCOUNTS, "a+") as file:
+            file.seek(0)
+            account_json_data = file.read()
+        account_data = json.loads(account_json_data)
+        current_account_data = account_data[self.app.account_username]
+        pupils = current_account_data["pupils"]
+
+        self.frame_pupils.list_variable.set(pupils)
+
     def cancel(self):
         self.app.show_page(page_option_menu.PageOptionMenu)
         self.entry_pupil_name.delete(0, tk.END)
@@ -61,15 +71,5 @@ class PageAddPupil(FramePage):
 
         tkMB.showinfo("Add Pupil", "Pupil successfully added")
         self.entry_pupil_name.delete(0, tk.END)
-
-        self.frame_pupils.list_variable.set(pupils)
-
-    def on_show(self):
-        with open(constants.JSON_ACCOUNTS, "a+") as file:
-            file.seek(0)
-            account_json_data = file.read()
-        account_data = json.loads(account_json_data)
-        current_account_data = account_data[self.app.account_username]
-        pupils = current_account_data["pupils"]
 
         self.frame_pupils.list_variable.set(pupils)
