@@ -1,8 +1,10 @@
 import tkinter as tk
+
 from frame_main_menu import FrameMainMenu
 from frame_login import FrameLogin
 from frame_register import FrameRegister
 from menu_options.frame_option_menu import FrameOptionMenu
+from menu_options.frame_add_pupil import FrameAddPupil
 
 
 class Application(tk.Frame):
@@ -10,21 +12,24 @@ class Application(tk.Frame):
         tk.Frame.__init__(self, parent, *args, **kwargs)
         self.parent = parent
         self.pack(side="top", fill="both", expand=True)
+        self.account_username = ""
         self.frames = self.create_frames()
-        self.account = None
         self.show_frame(FrameMainMenu)
 
     def create_frames(self):
         frames = {}
-        for frame in {FrameMainMenu, FrameLogin, FrameRegister, FrameOptionMenu}:
+        for frame in {FrameMainMenu, FrameLogin, FrameRegister,
+                      FrameOptionMenu, FrameAddPupil}:
             f = frame(self)
             f.place(in_=self, relwidth=1, relheight=1)
             frames[frame] = f
         return frames
 
     def show_frame(self, frame_page):
-        self.frames[frame_page].lift()
+        frame = self.frames[frame_page]
+        frame.on_show()
+        frame.lift()
 
     def log_out(self):
-        self.account = None
+        self.account_username = ""
         self.show_frame(FrameMainMenu)
